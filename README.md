@@ -3,7 +3,7 @@ FreeView
 
 FreeView create a floating view that you can use and move inside your app and also when your app is in background.
 
-            <img src='raw/sample.png' width='270' height='480' />
+<img src='raw/sample.png' width='270' height='480' />
 
 Usage
 -----
@@ -32,7 +32,7 @@ Init FreeView with your content:
 
 ```
 
-            <img src='raw/sample1.gif' width='350' height='350' />
+<img src='raw/sample1.gif' width='350' height='350' />
 
 
 You can also use a callback:
@@ -80,7 +80,7 @@ If you want FreeView will show when your app goes to background use ``dismissOnB
 
 ```
 
-            <img src='raw/sample2.gif' width='350' height='350' />
+<img src='raw/sample2.gif' width='350' height='350' />
 
 
 You can check the sample App!
