@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">FreeView</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="show">Show</string>
+    <string name="showBG">Show BG</string>
+
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/FreeView.iml" filepath="$PROJECT_DIR$/FreeView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/freeview/freeview.iml" filepath="$PROJECT_DIR$/freeview/freeview.iml" />
+    </modules>
+  </component>
+</project>
