@@ -22,16 +22,16 @@ android {
 ext {
     // ./gradlew bintrayUpload
     bintrayRepo = 'maven'
-    bintrayName = 'appcrash'
+    bintrayName = 'freeview'
 
-    publishedGroupId = 'com.jcmore2.appcrash'
-    libraryName = 'appcrash'
-    artifact = 'appcrash'
+    publishedGroupId = 'com.jcmore2.freeview'
+    libraryName = 'freeview'
+    artifact = 'freeview'
 
-    libraryDescription = 'AppCrash let you relaunch the app and manage crash message when your app has an exception. '
+    libraryDescription = 'FreeView create a floating view that you can use and move inside your app and also when your app is in background.'
 
-    siteUrl = 'https://github.com/jcmore2/AppCrash'
-    gitUrl = 'https://github.com/jcmore2/AppCrash.git'
+    siteUrl = 'https://github.com/jcmore2/freeview'
+    gitUrl = 'https://github.com/jcmore2/freeview.git'
 
     libraryVersion = '1.0.0'
 
