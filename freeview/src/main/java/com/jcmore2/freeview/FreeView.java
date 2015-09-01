@@ -25,7 +25,7 @@ public class FreeView {
     protected static FreeViewListener mListener;
 
     protected static View contentView;
-    protected static boolean dismissOnBackgorund = true;
+    protected static boolean dismissOnBackground = true;
 
 
     /**
@@ -83,7 +83,7 @@ public class FreeView {
      * @return
      */
     public static FreeView dismissOnBackground(boolean dismiss){
-        dismissOnBackgorund = dismiss;
+        dismissOnBackground = dismiss;
         return sInstance;
     }
 

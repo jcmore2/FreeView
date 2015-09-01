@@ -58,7 +58,6 @@ public class FreeViewService extends Service {
         windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
         createView();
 
-        if (FreeView.dismissOnBackgorund) {
             BackgroundManager.init(getApplication()).registerListener(new BackgroundManager.Listener() {
                 @Override
                 public void onBecameForeground(Activity activity) {
@@ -67,13 +66,13 @@ public class FreeViewService extends Service {
 
                 @Override
                 public void onBecameBackground(Activity activity) {
+                    if (FreeView.dismissOnBackground) {
 
-                    removeView();
-                    stopService();
+                        removeView();
+                        stopService();
+                    }
                 }
             });
-        }
-
     }
 
     /**
@@ -155,7 +154,7 @@ public class FreeViewService extends Service {
             isViewVisible = false;
             windowManager.removeView(mView);
             if (FreeView.mListener != null) {
-                FreeView.dismissOnBackgorund = true;
+                FreeView.dismissOnBackground = true;
                 FreeView.mListener.onDismiss();
             }
         }
