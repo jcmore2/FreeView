@@ -18,6 +18,8 @@ public class FreeView {
 
     private static Application application;
     private static FreeView sInstance;
+    protected static Context mContext;
+
 
     private static Intent service;
     protected static FreeViewListener mListener;
@@ -95,7 +97,7 @@ public class FreeView {
             if (context == null) {
                 Log.e(TAG, "Cant init, context must not be null");
             } else {
-
+                mContext = context;
                 application = (Application) context.getApplicationContext();
             }
         }catch (Exception e){
@@ -138,5 +140,6 @@ public class FreeView {
     public interface FreeViewListener {
         void onShow();
         void onDismiss();
+        void onClick();
     }
 }

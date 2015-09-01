@@ -12,7 +12,7 @@ Add library to your build.gradle:
 
 ```java
 
-	    compile 'com.jcmore2.freeview:freeview:1.0.0'
+	    compile 'com.jcmore2.freeview:freeview:1.1.0'
 
 ```
 
@@ -48,6 +48,11 @@ You can also use a callback:
               @Override
               public void onDismiss() {
                    Toast.makeText(MainActivity.this, "onDismiss", Toast.LENGTH_SHORT).show();
+              }
+
+              @Override
+              public void onClick() {
+                    Toast.makeText(MainActivity.this, "onClick", Toast.LENGTH_SHORT).show();
               }
      });
 

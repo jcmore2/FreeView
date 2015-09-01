@@ -25,6 +25,20 @@ public class FreeViewService extends Service {
 
     boolean isViewVisible = false;
 
+    /**
+     * Max allowed duration for a "click", in milliseconds.
+     */
+    private static final int MAX_CLICK_DURATION = 1000;
+
+    /**
+     * Max allowed distance to move during a "click", in DP.
+     */
+    private static final int MAX_CLICK_DISTANCE = 15;
+
+    private long pressStartTime;
+    private float pressedX;
+    private float pressedY;
+
     @Override
     public IBinder onBind(Intent intent) {
         // TODO Auto-generated method stub
@@ -44,7 +58,7 @@ public class FreeViewService extends Service {
         windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
         createView();
 
-        if(FreeView.dismissOnBackgorund) {
+        if (FreeView.dismissOnBackgorund) {
             BackgroundManager.init(getApplication()).registerListener(new BackgroundManager.Listener() {
                 @Override
                 public void onBecameForeground(Activity activity) {
@@ -86,8 +100,18 @@ public class FreeViewService extends Service {
                             initialTouchX = event.getRawX();
                             initialTouchY = event.getRawY();
 
+                            pressStartTime = System.currentTimeMillis();
+                            pressedX = event.getX();
+                            pressedY = event.getY();
+
                             break;
                         case MotionEvent.ACTION_UP:
+
+                            long pressDuration = System.currentTimeMillis() - pressStartTime;
+                            if (pressDuration < MAX_CLICK_DURATION && distance(pressedX, pressedY, event.getX(), event.getY()) < MAX_CLICK_DISTANCE) {
+                                FreeView.mListener.onClick();
+                            }
+
                         case MotionEvent.ACTION_POINTER_UP:
                             break;
                         case MotionEvent.ACTION_MOVE:
@@ -110,6 +134,17 @@ public class FreeViewService extends Service {
 
     }
 
+    private static float distance(float x1, float y1, float x2, float y2) {
+        float dx = x1 - x2;
+        float dy = y1 - y2;
+        float distanceInPx = (float) Math.sqrt(dx * dx + dy * dy);
+        return pxToDp(distanceInPx);
+    }
+
+    private static float pxToDp(float px) {
+        return px / FreeView.mContext.getResources().getDisplayMetrics().density;
+    }
+
     /**
      * Remove view from window
      */
@@ -119,7 +154,7 @@ public class FreeViewService extends Service {
         if (mView != null && isViewVisible) {
             isViewVisible = false;
             windowManager.removeView(mView);
-            if(FreeView.mListener != null){
+            if (FreeView.mListener != null) {
                 FreeView.dismissOnBackgorund = true;
                 FreeView.mListener.onDismiss();
             }
@@ -137,7 +172,7 @@ public class FreeViewService extends Service {
             setViewPosition();
             windowManager.addView(mView, params);
 
-            if(FreeView.mListener != null){
+            if (FreeView.mListener != null) {
                 FreeView.mListener.onShow();
             }
         }

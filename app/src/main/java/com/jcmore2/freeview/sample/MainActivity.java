@@ -38,6 +38,11 @@ public class MainActivity extends AppCompatActivity {
                     public void onDismiss() {
                         Toast.makeText(MainActivity.this, "onDismiss", Toast.LENGTH_SHORT).show();
                     }
+
+                    @Override
+                    public void onClick() {
+                        Toast.makeText(MainActivity.this, "onClick", Toast.LENGTH_SHORT).show();
+                    }
                 });
             }
         });
@@ -54,6 +59,11 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onDismiss() {
                         Toast.makeText(MainActivity.this, "onDismiss", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onClick() {
+                        Toast.makeText(MainActivity.this, "onClick", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
