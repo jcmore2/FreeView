@@ -9,7 +9,7 @@ android {
         minSdkVersion 14
         targetSdkVersion 22
         versionCode 1
-        versionName "1.1.1"
+        versionName "1.1.2"
     }
     buildTypes {
         release {
@@ -33,7 +33,7 @@ ext {
     siteUrl = 'https://github.com/jcmore2/freeview'
     gitUrl = 'https://github.com/jcmore2/freeview.git'
 
-    libraryVersion = '1.1.1'
+    libraryVersion = '1.1.2'
 
     developerId = 'jcmore2'
     developerName = 'Juan Carlos Moreno'

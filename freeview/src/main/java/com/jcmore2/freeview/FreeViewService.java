@@ -38,6 +38,7 @@ public class FreeViewService extends Service {
     private long pressStartTime;
     private float pressedX;
     private float pressedY;
+    private boolean stayedWithinClickDistance;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -102,18 +103,23 @@ public class FreeViewService extends Service {
                             pressStartTime = System.currentTimeMillis();
                             pressedX = event.getX();
                             pressedY = event.getY();
+                            stayedWithinClickDistance = true;
 
                             break;
                         case MotionEvent.ACTION_UP:
 
                             long pressDuration = System.currentTimeMillis() - pressStartTime;
-                            if (pressDuration < MAX_CLICK_DURATION && distance(pressedX, pressedY, event.getX(), event.getY()) < MAX_CLICK_DISTANCE) {
+                            if (pressDuration < MAX_CLICK_DURATION && stayedWithinClickDistance) {
                                 FreeView.mListener.onClick();
                             }
 
                         case MotionEvent.ACTION_POINTER_UP:
                             break;
                         case MotionEvent.ACTION_MOVE:
+
+                            if (stayedWithinClickDistance && distance(pressedX, pressedY, event.getX(), event.getY()) > MAX_CLICK_DISTANCE) {
+                                stayedWithinClickDistance = false;
+                            }
 
                             paramsF.x = initialX + (int) (event.getRawX() - initialTouchX);
                             paramsF.y = initialY + (int) (event.getRawY() - initialTouchY);
