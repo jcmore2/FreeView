@@ -29,7 +29,7 @@ public class FreeView {
 
 
     /**
-     * Init the AppCrash instance
+     * Init the FreeView instance
      *
      * @param context
      */
@@ -43,7 +43,7 @@ public class FreeView {
     }
 
     /**
-     * get the AppCrash instance
+     * get the FreeView instance
      * @return
      */
     public static FreeView get(){
